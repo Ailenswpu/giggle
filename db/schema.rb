@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140202095649) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "collectionships", force: true do |t|
+  create_table "collectionships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "product_id"
     t.datetime "created_at"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140202095649) do
 
   add_index "collectionships", ["user_id", "product_id"], name: "index_collectionships_on_user_id_and_product_id", unique: true, using: :btree
 
-  create_table "evaluates", force: true do |t|
+  create_table "evaluates", force: :cascade do |t|
     t.string   "title"
     t.text     "details"
     t.integer  "product_id"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20140202095649) do
     t.integer  "messages_count", default: 0
   end
 
-  create_table "likeships", force: true do |t|
+  create_table "likeships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "likeable_id"
     t.string   "likeable_type"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20140202095649) do
 
   add_index "likeships", ["user_id", "likeable_id", "likeable_type"], name: "index_likeships_on_user_id_and_likeable_id_and_likeable_type", unique: true, using: :btree
 
-  create_table "messages", force: true do |t|
+  create_table "messages", force: :cascade do |t|
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20140202095649) do
 
   add_index "messages", ["created_at"], name: "index_messages_on_product_id_and_created_at", using: :btree
 
-  create_table "notifications", force: true do |t|
+  create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "message_id"
     t.boolean  "read",       default: false
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20140202095649) do
   add_index "notifications", ["message_id"], name: "index_notifications_on_message_id", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
-  create_table "product_categories", force: true do |t|
+  create_table "product_categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20140202095649) do
 
   add_index "product_categories", ["name"], name: "index_product_categories_on_name", unique: true, using: :btree
 
-  create_table "product_pictures", force: true do |t|
+  create_table "product_pictures", force: :cascade do |t|
     t.string   "picture"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20140202095649) do
 
   add_index "product_pictures", ["product_id"], name: "index_product_pictures_on_product_id", using: :btree
 
-  create_table "products", force: true do |t|
+  create_table "products", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.text     "details"
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20140202095649) do
     t.integer  "evaluates_count",                             default: 0
   end
 
-  create_table "user_pictures", force: true do |t|
+  create_table "user_pictures", force: :cascade do |t|
     t.string   "picture"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 20140202095649) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
     t.string   "name"

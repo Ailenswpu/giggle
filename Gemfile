@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -57,16 +57,18 @@ group :development, :test do
 end
 
 group :development do
-  gem 'capistrano-rails'
-  gem 'capistrano3-puma'
-  gem 'capistrano-rvm'
+  gem 'capistrano-rbenv', github: "capistrano/rbenv"
+  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-passenger'
 end
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
 
 # Use puma as the app server
-gem 'puma'
+# gem 'puma'
 
 gem 'therubyracer', platforms: :ruby
 
