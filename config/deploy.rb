@@ -48,7 +48,7 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
-      execute "sudo passenger-config restart-app"
+      # execute "sudo passenger-config restart-app"
     end
   end
 
